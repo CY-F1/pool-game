@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://xwxs46lfl2wt"]
+[gd_scene load_steps=5 format=3 uid="uid://xwxs46lfl2wt"]
 
 [ext_resource type="PackedScene" uid="uid://b3frkki0qkofy" path="res://table.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://22r1hbc46gcs" path="res://ball.tscn" id="3_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://deryexl81g3ad" path="res://ball_spawner.tscn" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://pt8311oa4sp2" path="res://power_bar.gd" id="4_aqk2v"]
 
 [node name="World" type="Node2D"]
 
@@ -10,3 +12,9 @@ position = Vector2(5, 98)
 
 [node name="Ball_spawner" parent="." instance=ExtResource("3_tlwt5")]
 position = Vector2(597, 644)
+ball_scene = ExtResource("3_aqk2v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Power Bar" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("4_aqk2v")

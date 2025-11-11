@@ -12,5 +12,5 @@ config_version=5
 
 config/name="pool game"
 run/main_scene="uid://xwxs46lfl2wt"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"

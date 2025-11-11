@@ -1,40 +1,42 @@
 extends Node2D
 
-@export var ball_scene = preload("res://ball.tscn")
+@export var ball_scene: PackedScene
 @export var min_power: float = 200
 @export var max_power: float = 1000
-@export var max_charge_time: float = 2.0  # seconds to reach max power
+@export var max_charge_time: float = 2.0	# seconds to reach full power
+
+@onready var power_bar = get_node("../CanvasLayer/Power Bar")  # adjust path
 
 
 var charging: bool = false
 var charge_time: float = 0.0
 var aim_direction: Vector2 = Vector2.ZERO
+var mouse_position: Vector2 = Vector2.ZERO
 
 func _process(delta):
 	if charging:
-		# Increase charge over time
-		charge_time += delta
-		charge_time = min(charge_time, max_charge_time)
-
-
+		# Increase charge over time (cap at max)
+		charge_time = min(charge_time + delta, max_charge_time)
+	queue_redraw()	# redraw the aiming line every frame
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseMotion:
+		mouse_position = event.position
+		aim_direction = (mouse_position - global_position).normalized()
+	elif event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				# Start charging
 				charging = true
 				charge_time = 0.0
+				power_bar.start_charge()
 			else:
-				# Release: shoot
+				# Release shot
 				if charging:
-					shoot_ball(event.position)
+					shoot_ball(mouse_position)
 					charging = false
 					charge_time = 0.0
-
-	if event is InputEventMouseMotion:
-		# Update aim direction
-		aim_direction = (event.position - global_position).normalized()
+					power_bar.stop_charge()
 
 func shoot_ball(target_position: Vector2):
 	var ball = ball_scene.instantiate()
@@ -48,13 +50,11 @@ func shoot_ball(target_position: Vector2):
 	# Direction towards mouse
 	var direction = (target_position - global_position).normalized()
 
-	# Apply impulse to the ball
+	# Apply impulse to ball
 	ball.apply_impulse(direction * power)
 
-	# Optionally: start ball animation or size updates
-	if "animate_merge" in ball:
-		ball.call_deferred("animate_merge")
-
 func _draw():
-	# Draw aiming line for feedback
-	draw_line(Vector2.ZERO, aim_direction * 100, Color.RED, 10)
+	# Draw aiming line only while charging
+	var t = charge_time / max_charge_time
+	var color = Color(1.0, 1.0 - t, 1.0 - t)	# Turns red at full charge
+	draw_line(Vector2.ZERO, aim_direction * 100, color, 3.0)
