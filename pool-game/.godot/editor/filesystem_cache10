@@ -1,10 +1,11 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1762894396
-ball.gd::GDScript::443008230853871389::1762894334::0::1::::Ball<>RigidBody2D<><>0<>0<><>::
-ball.tscn::PackedScene::1951915966444150966::1762894334::0::1::::<><><>0<>0<><>::uid://gkujswby27qf::::res://ball.gd<>uid://b47jww8xtk6bq::::res://Balls.png
+::res://::1767390338
+ball.gd::GDScript::443008230853871389::1762897919::0::1::::Ball<>RigidBody2D<><>0<>0<><>::
+ball.tscn::PackedScene::1951915966444150966::1762907391::0::1::::<><><>0<>0<><>::uid://gkujswby27qf::::res://ball.gd<>uid://b47jww8xtk6bq::::res://Balls.png
 Balls.png::CompressedTexture2D::4488544185289841870::1762894334::1762894397::1::::<><><>0<>0<>5563aa07e6a85f09223a271d7c931cd5<>res://.godot/imported/Balls.png-9dffefcf7d1b4cec1e8cb8b4bceb4ebb.ctex::
-ball_spawner.gd::GDScript::6722104593613979915::1762894334::0::1::::<>Node2D<><>0<>0<><>::
+ball_spawner.gd::GDScript::6722104593613979915::1762899352::0::1::::<>Node2D<><>0<>0<><>::
 ball_spawner.tscn::PackedScene::7476577425016747427::1762894334::0::1::::<><><>0<>0<><>::uid://c21ic0d0iq56v::::res://ball_spawner.gd
 icon.svg::CompressedTexture2D::8927126421397074977::1762894334::1762894397::1::::<><><>0<>0<>e69a51a8ab29f110b8d29b1a5b6f16cc<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-table.tscn::PackedScene::4363080779893998698::1762894334::0::1::::<><><>0<>0<><>::
-world.tscn::PackedScene::1661189920961003443::1762894334::0::1::::<><><>0<>0<><>::uid://b3frkki0qkofy::::res://table.tscn<>uid://deryexl81g3ad::::res://ball_spawner.tscn
+power_bar.gd::GDScript::1094110901297527561::1762899237::0::1::::<>Node2D<><>0<>0<><>::
+table.tscn::PackedScene::4363080779893998698::1762894861::0::1::::<><><>0<>0<><>::
+world.tscn::PackedScene::1661189920961003443::1762899352::0::1::::<><><>0<>0<><>::uid://b3frkki0qkofy::::res://table.tscn<>uid://22r1hbc46gcs::::res://ball.tscn<>uid://deryexl81g3ad::::res://ball_spawner.tscn<>uid://pt8311oa4sp2::::res://power_bar.gd
